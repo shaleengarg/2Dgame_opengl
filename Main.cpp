@@ -29,6 +29,8 @@ float rectangle_rotation = 0;
 float triangle_rotation = 0;
 int MAP[MAX_MAP];
 int No_cubes;
+bool TopView = false;
+bool TowerView = true;
 
 static void error_callback(int error, const char* description)
 {
@@ -82,8 +84,15 @@ void draw ()
     static float c = 0;
     //c++;
     //Matrices.view = glm::lookAt(glm::vec3(1,0,3), glm::vec3(0,0,0), glm::vec3(sinf(c*M_PI/180.0),3*cosf(c*M_PI/180.0),0)); // Fixed camera for 2D (ortho) in XY plane
-    Matrices.view = glm::lookAt(glm::vec3(25, 25,25), glm::vec3(0,0,0), glm::vec3(0,0,1)); // Fixed camera for 2D (ortho) in XY plane
-
+    if(TowerView == true)
+    {
+        Matrices.view = glm::lookAt(glm::vec3(25, 25,25), glm::vec3(Human.x, Human.y, Human.z), glm::vec3(0,0,1)); // Fixed camera for 2D (ortho) in XY plane
+    }
+    else if(TopView == true)
+    {
+        Matrices.view = glm::lookAt(glm::vec3(Human.x, Human.y-1, Human.z+10), glm::vec3(Human.x, Human.y, Human.z), glm::vec3(0,0,1)); // Fixed camera for 2D (ortho) in XY plane
+        cout << Human.x << " " << Human.y << " " << Human.z << endl;
+    }
     // Compute ViewProject matrix as view/camera might not be changed for this frame (basic scenario)
     //  Don't change unless you are sure!!
     glm::mat4 VP = Matrices.projection * Matrices.view;
@@ -155,7 +164,7 @@ void draw ()
     }
 
     //HUMAN IN MAKING
-    
+
     glUseProgram (programID);
     Matrices.model = glm::mat4(1.0f);
     glm::mat4 translateHuman = glm::translate (glm::vec3(Human.x, Human.y, Human.z)); // glTranslatef
@@ -263,7 +272,7 @@ void initGL (GLFWwindow* window, int width, int height)
                     Cube[No_cubes].y = j*MAP_CUBE_SIZE;
                     //                cout << "Z original " << (int)line[index] << endl;
                     Cube[No_cubes].z = (int)(line[index] - '0');
-                createCubes(No_cubes, Cube[No_cubes].x, Cube[No_cubes].y, Cube[No_cubes].z, MAP_CUBE_SIZE, MAP_CUBE_SIZE, MAP_CUBE_SIZE, textureID);
+                    createCubes(No_cubes, Cube[No_cubes].x, Cube[No_cubes].y, Cube[No_cubes].z, MAP_CUBE_SIZE, MAP_CUBE_SIZE, MAP_CUBE_SIZE, textureID);
                 }
                 i += 1;        
                 cout << "came here" << endl;

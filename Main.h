@@ -17,3 +17,5 @@ extern float rectangle_rotation;
 extern float triangle_rotation;
 extern GLuint programID,  textureProgramID;
 extern int MAP[MAX_MAP];
+extern bool TopView;
+extern bool TowerView;
