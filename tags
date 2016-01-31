@@ -1,0 +1,153 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.8	//
+ColorBuffer	Objects.cpp	/^    GLuint ColorBuffer;$/;"	m	struct:VAO	file:
+ColorBuffer	Objects.h	/^    GLuint ColorBuffer;$/;"	m	struct:VAO
+ColorBuffer	Sample_GL3_2D.cpp	/^	GLuint ColorBuffer;$/;"	m	struct:VAO	file:
+Cub	Objects.h	/^typedef struct Cub{$/;"	s
+Cube	Main.cpp	/^Cubes Cube[1000];$/;"	v
+Cube	Objects.cpp	/^Cubes Cube[MAX_CUBES];$/;"	v
+Cubes	Objects.cpp	/^}Cubes;$/;"	t	typeref:struct:cub	file:
+Cubes	Objects.h	/^}Cubes;$/;"	t	typeref:struct:Cub
+FillMode	Objects.cpp	/^    GLenum FillMode; \/\/ GL_FILL, GL_LINE$/;"	m	struct:VAO	file:
+FillMode	Objects.h	/^    GLenum FillMode; \/\/ GL_FILL, GL_LINE$/;"	m	struct:VAO
+FillMode	Sample_GL3_2D.cpp	/^	GLenum FillMode; \/\/ GL_FILL, GL_LINE$/;"	m	struct:VAO	file:
+GLM_FORCE_RADIANS	Controls.cpp	6;"	d	file:
+GLM_FORCE_RADIANS	Main.cpp	7;"	d	file:
+GLM_FORCE_RADIANS	Objects.cpp	5;"	d	file:
+GLM_FORCE_RADIANS	Sample_GL3_2D.cpp	6;"	d	file:
+GLM_FORCE_RADIANS	Untouchable.cpp	6;"	d	file:
+GLMatrices	Objects.cpp	/^struct GLMatrices {$/;"	s	file:
+GLMatrices	Objects.h	/^struct GLMatrices {$/;"	s
+GLMatrices	Sample_GL3_2D.cpp	/^struct GLMatrices {$/;"	s	file:
+LoadShaders	Sample_GL3_2D.cpp	/^GLuint LoadShaders(const char * vertex_file_path,const char * fragment_file_path) {$/;"	f
+LoadShaders	Untouchable.cpp	/^GLuint LoadShaders(const char * vertex_file_path,const char * fragment_file_path) {$/;"	f
+MAP	Main.cpp	/^int MAP[MAX_MAP];$/;"	v
+MAP_CUBE_SIZE	Main.cpp	19;"	d	file:
+MAX_CUBES	Objects.cpp	16;"	d	file:
+MAX_MAP	Main.cpp	18;"	d	file:
+Matrices	Objects.cpp	/^struct GLMatrices Matrices;$/;"	v	typeref:struct:GLMatrices
+Matrices	Sample_GL3_2D.cpp	/^} Matrices;$/;"	v	typeref:struct:GLMatrices
+MatrixID	Objects.cpp	/^    GLuint MatrixID; \/\/ For use with normal shader$/;"	m	struct:GLMatrices	file:
+MatrixID	Objects.h	/^    GLuint MatrixID; \/\/ For use with normal shader$/;"	m	struct:GLMatrices
+MatrixID	Sample_GL3_2D.cpp	/^	GLuint MatrixID; \/\/ For use with normal shader$/;"	m	struct:GLMatrices	file:
+No_cubes	Main.cpp	/^int No_cubes;$/;"	v
+NumVertices	Objects.cpp	/^    int NumVertices;$/;"	m	struct:VAO	file:
+NumVertices	Objects.h	/^    int NumVertices;$/;"	m	struct:VAO
+NumVertices	Sample_GL3_2D.cpp	/^	int NumVertices;$/;"	m	struct:VAO	file:
+PrimitiveMode	Objects.cpp	/^    GLenum PrimitiveMode; \/\/ GL_POINTS, GL_LINE_STRIP, GL_LINE_LOOP, GL_LINES, GL_LINE_STRIP_ADJACENCY, GL_LINES_ADJACENCY, GL_TRIANGLE_STRIP, GL_TRIANGLE_FAN, GL_TRIANGLES, GL_TRIANGLE_STRIP_ADJACENCY and GL_TRIANGLES_ADJACENCY$/;"	m	struct:VAO	file:
+PrimitiveMode	Objects.h	/^    GLenum PrimitiveMode; \/\/ GL_POINTS, GL_LINE_STRIP, GL_LINE_LOOP, GL_LINES, GL_LINE_STRIP_ADJACENCY, GL_LINES_ADJACENCY, GL_TRIANGLE_STRIP, GL_TRIANGLE_FAN, GL_TRIANGLES, GL_TRIANGLE_STRIP_ADJACENCY and GL_TRIANGLES_ADJACENCY$/;"	m	struct:VAO
+PrimitiveMode	Sample_GL3_2D.cpp	/^	GLenum PrimitiveMode; \/\/ GL_POINTS, GL_LINE_STRIP, GL_LINE_LOOP, GL_LINES, GL_LINE_STRIP_ADJACENCY, GL_LINES_ADJACENCY, GL_TRIANGLE_STRIP, GL_TRIANGLE_FAN, GL_TRIANGLES, GL_TRIANGLE_STRIP_ADJACENCY and GL_TRIANGLES_ADJACENCY$/;"	m	struct:VAO	file:
+TexMatrixID	Objects.cpp	/^    GLuint TexMatrixID; \/\/ For use with texture shader$/;"	m	struct:GLMatrices	file:
+TexMatrixID	Objects.h	/^    GLuint TexMatrixID; \/\/ For use with texture shader$/;"	m	struct:GLMatrices
+TexMatrixID	Sample_GL3_2D.cpp	/^	GLuint TexMatrixID; \/\/ For use with texture shader$/;"	m	struct:GLMatrices	file:
+TextureBuffer	Objects.cpp	/^    GLuint TextureBuffer;$/;"	m	struct:VAO	file:
+TextureBuffer	Objects.h	/^    GLuint TextureBuffer;$/;"	m	struct:VAO
+TextureBuffer	Sample_GL3_2D.cpp	/^	GLuint TextureBuffer;$/;"	m	struct:VAO	file:
+TextureID	Objects.cpp	/^    GLuint TextureID;$/;"	m	struct:VAO	file:
+TextureID	Objects.h	/^    GLuint TextureID;$/;"	m	struct:VAO
+TextureID	Sample_GL3_2D.cpp	/^	GLuint TextureID;$/;"	m	struct:VAO	file:
+VAO	Objects.cpp	/^struct VAO {$/;"	s	file:
+VAO	Objects.cpp	/^typedef struct VAO VAO;$/;"	t	typeref:struct:VAO	file:
+VAO	Objects.h	/^struct VAO {$/;"	s
+VAO	Objects.h	/^typedef struct VAO VAO;$/;"	t	typeref:struct:VAO
+VAO	Sample_GL3_2D.cpp	/^struct VAO {$/;"	s	file:
+VAO	Sample_GL3_2D.cpp	/^typedef struct VAO VAO;$/;"	t	typeref:struct:VAO	file:
+VertexArrayID	Objects.cpp	/^    GLuint VertexArrayID;$/;"	m	struct:VAO	file:
+VertexArrayID	Objects.h	/^    GLuint VertexArrayID;$/;"	m	struct:VAO
+VertexArrayID	Sample_GL3_2D.cpp	/^	GLuint VertexArrayID;$/;"	m	struct:VAO	file:
+VertexBuffer	Objects.cpp	/^    GLuint VertexBuffer;$/;"	m	struct:VAO	file:
+VertexBuffer	Objects.h	/^    GLuint VertexBuffer;$/;"	m	struct:VAO
+VertexBuffer	Sample_GL3_2D.cpp	/^	GLuint VertexBuffer;$/;"	m	struct:VAO	file:
+X	Objects.cpp	/^VAO *triangle, *rectangle, *X, *Y, *Z;$/;"	v
+Y	Objects.cpp	/^VAO *triangle, *rectangle, *X, *Y, *Z;$/;"	v
+Z	Objects.cpp	/^VAO *triangle, *rectangle, *X, *Y, *Z;$/;"	v
+camera_rotation_angle	Main.cpp	/^float camera_rotation_angle = 90;$/;"	v
+camera_rotation_angle	Sample_GL3_2D.cpp	/^float camera_rotation_angle = 90;$/;"	v
+create3DObject	Sample_GL3_2D.cpp	/^struct VAO* create3DObject (GLenum primitive_mode, int numVertices, const GLfloat* vertex_buffer_data, const GLfloat red, const GLfloat green, const GLfloat blue, GLenum fill_mode=GL_FILL)$/;"	f
+create3DObject	Sample_GL3_2D.cpp	/^struct VAO* create3DObject (GLenum primitive_mode, int numVertices, const GLfloat* vertex_buffer_data, const GLfloat* color_buffer_data, GLenum fill_mode=GL_FILL)$/;"	f
+create3DObject	Untouchable.cpp	/^struct VAO* create3DObject (GLenum primitive_mode, int numVertices, const GLfloat* vertex_buffer_data, const GLfloat* color_buffer_data, GLenum fill_mode=GL_FILL)$/;"	f
+create3DTexturedObject	Sample_GL3_2D.cpp	/^struct VAO* create3DTexturedObject (GLenum primitive_mode, int numVertices, const GLfloat* vertex_buffer_data, const GLfloat* texture_buffer_data, GLuint textureID, GLenum fill_mode=GL_FILL)$/;"	f
+create3DTexturedObject	Untouchable.cpp	/^struct VAO* create3DTexturedObject (GLenum primitive_mode, int numVertices, const GLfloat* vertex_buffer_data, const GLfloat* texture_buffer_data, GLuint textureID, GLenum fill_mode=GL_FILL)$/;"	f
+createCube	Objects.cpp	/^void createCube(float x)$/;"	f
+createCubes	Objects.cpp	/^void createCubes(int Cube_no, float x, float y, float z, float length, float width, float height, GLuint textureID)$/;"	f
+createRectangle	Objects.cpp	/^void createRectangle (GLuint textureID)$/;"	f
+createRectangle	Sample_GL3_2D.cpp	/^void createRectangle (GLuint textureID)$/;"	f
+createTexture	Sample_GL3_2D.cpp	/^GLuint createTexture (const char* filename)$/;"	f
+createTexture	Untouchable.cpp	/^GLuint createTexture (const char* filename)$/;"	f
+createTriangle	Objects.cpp	/^void createTriangle ()$/;"	f
+createTriangle	Sample_GL3_2D.cpp	/^void createTriangle ()$/;"	f
+createX	Objects.cpp	/^void createX()$/;"	f
+createY	Objects.cpp	/^void createY()$/;"	f
+createZ	Objects.cpp	/^void createZ()$/;"	f
+cub	Objects.cpp	/^typedef struct cub{$/;"	s	file:
+cube	Objects.cpp	/^    VAO *cube;$/;"	m	struct:cub	file:
+cube	Objects.h	/^    VAO* cube;$/;"	m	struct:Cub
+draw	Main.cpp	/^void draw ()$/;"	f
+draw	Sample_GL3_2D.cpp	/^void draw ()$/;"	f
+draw3DObject	Sample_GL3_2D.cpp	/^void draw3DObject (struct VAO* vao)$/;"	f
+draw3DObject	Untouchable.cpp	/^void draw3DObject (struct VAO* vao)$/;"	f
+draw3DTexturedObject	Sample_GL3_2D.cpp	/^void draw3DTexturedObject (struct VAO* vao)$/;"	f
+draw3DTexturedObject	Untouchable.cpp	/^void draw3DTexturedObject (struct VAO* vao)$/;"	f
+error_callback	Main.cpp	/^static void error_callback(int error, const char* description)$/;"	f	file:
+error_callback	Sample_GL3_2D.cpp	/^static void error_callback(int error, const char* description)$/;"	f	file:
+height	Objects.cpp	/^    float height;$/;"	m	struct:cub	file:
+height	Objects.h	/^    float height;$/;"	m	struct:Cub
+initGL	Main.cpp	/^void initGL (GLFWwindow* window, int width, int height)$/;"	f
+initGL	Sample_GL3_2D.cpp	/^void initGL (GLFWwindow* window, int width, int height)$/;"	f
+initGLFW	Main.cpp	/^GLFWwindow* initGLFW (int width, int height)$/;"	f
+initGLFW	Sample_GL3_2D.cpp	/^GLFWwindow* initGLFW (int width, int height)$/;"	f
+keyboard	Controls.cpp	/^void keyboard (GLFWwindow* window, int key, int scancode, int action, int mods)$/;"	f
+keyboard	Sample_GL3_2D.cpp	/^void keyboard (GLFWwindow* window, int key, int scancode, int action, int mods)$/;"	f
+keyboardChar	Controls.cpp	/^void keyboardChar (GLFWwindow* window, unsigned int key)$/;"	f
+keyboardChar	Sample_GL3_2D.cpp	/^void keyboardChar (GLFWwindow* window, unsigned int key)$/;"	f
+length	Objects.cpp	/^    float length;$/;"	m	struct:cub	file:
+length	Objects.h	/^    float length;$/;"	m	struct:Cub
+main	Main.cpp	/^int main (int argc, char** argv)$/;"	f
+main	Sample_GL3_2D.cpp	/^int main (int argc, char** argv)$/;"	f
+model	Objects.cpp	/^    glm::mat4 model;$/;"	m	struct:GLMatrices	file:
+model	Objects.h	/^    glm::mat4 model;$/;"	m	struct:GLMatrices
+model	Sample_GL3_2D.cpp	/^	glm::mat4 model;$/;"	m	struct:GLMatrices	file:
+mouseButton	Controls.cpp	/^void mouseButton (GLFWwindow* window, int button, int action, int mods)$/;"	f
+mouseButton	Sample_GL3_2D.cpp	/^void mouseButton (GLFWwindow* window, int button, int action, int mods)$/;"	f
+programID	Sample_GL3_2D.cpp	/^GLuint programID,  textureProgramID;$/;"	v
+projection	Objects.cpp	/^    glm::mat4 projection;$/;"	m	struct:GLMatrices	file:
+projection	Objects.h	/^    glm::mat4 projection;$/;"	m	struct:GLMatrices
+projection	Sample_GL3_2D.cpp	/^	glm::mat4 projection;$/;"	m	struct:GLMatrices	file:
+quit	Sample_GL3_2D.cpp	/^void quit(GLFWwindow *window)$/;"	f
+quit	Untouchable.cpp	/^void quit(GLFWwindow *window)$/;"	f
+rectangle	Objects.cpp	/^VAO *triangle, *rectangle, *X, *Y, *Z;$/;"	v
+rectangle	Sample_GL3_2D.cpp	/^VAO *triangle, *rectangle;$/;"	v
+rectangle_rot_dir	Main.cpp	/^float rectangle_rot_dir = -1;$/;"	v
+rectangle_rot_dir	Sample_GL3_2D.cpp	/^float rectangle_rot_dir = -1;$/;"	v
+rectangle_rot_status	Main.cpp	/^bool rectangle_rot_status = true;$/;"	v
+rectangle_rot_status	Sample_GL3_2D.cpp	/^bool rectangle_rot_status = true;$/;"	v
+rectangle_rotation	Main.cpp	/^float rectangle_rotation = 0;$/;"	v
+rectangle_rotation	Sample_GL3_2D.cpp	/^float rectangle_rotation = 0;$/;"	v
+reshapeWindow	Main.cpp	/^void reshapeWindow (GLFWwindow* window, int width, int height)$/;"	f
+reshapeWindow	Sample_GL3_2D.cpp	/^void reshapeWindow (GLFWwindow* window, int width, int height)$/;"	f
+textureID	Objects.cpp	/^    GLuint textureID;$/;"	m	struct:cub	file:
+textureID	Objects.h	/^    GLuint textureID;$/;"	m	struct:Cub
+textureProgramID	Sample_GL3_2D.cpp	/^GLuint programID,  textureProgramID;$/;"	v
+triangle	Objects.cpp	/^VAO *triangle, *rectangle, *X, *Y, *Z;$/;"	v
+triangle	Sample_GL3_2D.cpp	/^VAO *triangle, *rectangle;$/;"	v
+triangle_rot_dir	Main.cpp	/^float triangle_rot_dir = 1;$/;"	v
+triangle_rot_dir	Sample_GL3_2D.cpp	/^float triangle_rot_dir = 1;$/;"	v
+triangle_rot_status	Main.cpp	/^bool triangle_rot_status = true;$/;"	v
+triangle_rot_status	Sample_GL3_2D.cpp	/^bool triangle_rot_status = true;$/;"	v
+triangle_rotation	Main.cpp	/^float triangle_rotation = 0;$/;"	v
+triangle_rotation	Sample_GL3_2D.cpp	/^float triangle_rotation = 0;$/;"	v
+view	Objects.cpp	/^    glm::mat4 view;$/;"	m	struct:GLMatrices	file:
+view	Objects.h	/^    glm::mat4 view;$/;"	m	struct:GLMatrices
+view	Sample_GL3_2D.cpp	/^	glm::mat4 view;$/;"	m	struct:GLMatrices	file:
+width	Objects.cpp	/^    float width;$/;"	m	struct:cub	file:
+width	Objects.h	/^    float width;$/;"	m	struct:Cub
+x	Objects.cpp	/^    float x;$/;"	m	struct:cub	file:
+x	Objects.h	/^    float x;$/;"	m	struct:Cub
+y	Objects.cpp	/^    float y;$/;"	m	struct:cub	file:
+y	Objects.h	/^    float y;$/;"	m	struct:Cub
+z	Objects.cpp	/^    float z;$/;"	m	struct:cub	file:
+z	Objects.h	/^    float z;$/;"	m	struct:Cub
