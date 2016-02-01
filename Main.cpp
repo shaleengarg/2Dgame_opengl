@@ -86,7 +86,7 @@ void draw ()
     //Matrices.view = glm::lookAt(glm::vec3(1,0,3), glm::vec3(0,0,0), glm::vec3(sinf(c*M_PI/180.0),3*cosf(c*M_PI/180.0),0)); // Fixed camera for 2D (ortho) in XY plane
     if(TowerView == true)
     {
-        Matrices.view = glm::lookAt(glm::vec3(25, 25,25), glm::vec3(Human.x, Human.y, Human.z), glm::vec3(0,0,1)); // Fixed camera for 2D (ortho) in XY plane
+        Matrices.view = glm::lookAt(glm::vec3(25, 25, 25), glm::vec3(Human.x, Human.y, Human.z), glm::vec3(0, 0, 1)); // Fixed camera for 2D (ortho) in XY plane
     }
     else if(TopView == true)
     {
