@@ -36,6 +36,7 @@ set backspace=indent,eol,start
 set expandtab
 set fileencodings=ucs-bom,utf-8,default,latin1
 set helplang=en
+set history=1000
 set hlsearch
 set incsearch
 set laststatus=2
@@ -62,8 +63,8 @@ badd +1 Controls.h
 badd +1 Objects.h
 badd +1 Untouchable.h
 badd +1 Objects.cpp
-badd +0 MAP.txt
-badd +0 Controls.cpp
+badd +1 MAP.txt
+badd +1 Controls.cpp
 argglobal
 silent! argdel *
 argadd Main.cpp
@@ -326,78 +327,30 @@ setlocal nowinfixheight
 setlocal nowinfixwidth
 setlocal wrap
 setlocal wrapmargin=0
-34
+66
 normal! zo
-39
+156
 normal! zo
-64
+182
 normal! zo
-147
+209
 normal! zo
-163
+230
 normal! zo
-167
-normal! zo
-178
-normal! zo
-190
-normal! zo
-211
-normal! zo
-242
-normal! zo
-245
-normal! zo
-249
-normal! zo
-251
-normal! zo
-287
-normal! zo
-298
-normal! zo
-311
-normal! zo
-162
-normal! zo
-166
-normal! zo
-177
-normal! zo
-189
-normal! zo
-210
-normal! zo
-241
-normal! zo
-244
-normal! zo
-249
-normal! zo
-251
+258
 normal! zo
 261
 normal! zo
-295
-normal! zo
-306
+308
 normal! zo
 319
 normal! zo
-263
-normal! zo
-297
-normal! zo
-308
-normal! zo
-321
-normal! zo
-let s:l = 256 - ((17 * winheight(0) + 19) / 38)
+let s:l = 256 - ((16 * winheight(0) + 18) / 36)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
 256
-normal! 061|
+normal! 018|
 wincmd w
 exe 'vert 1resize ' . ((&columns * 30 + 84) / 169)
 exe 'vert 2resize ' . ((&columns * 138 + 84) / 169)
@@ -518,7 +471,7 @@ setlocal nowinfixheight
 setlocal nowinfixwidth
 setlocal wrap
 setlocal wrapmargin=0
-let s:l = 6 - ((5 * winheight(0) + 19) / 38)
+let s:l = 6 - ((5 * winheight(0) + 18) / 36)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
@@ -643,19 +596,13 @@ setlocal wrap
 setlocal wrapmargin=0
 41
 normal! zo
-117
+118
 normal! zo
-122
+144
 normal! zo
-143
+286
 normal! zo
-148
-normal! zo
-285
-normal! zo
-437
-normal! zo
-let s:l = 442 - ((315 * winheight(0) + 19) / 38)
+let s:l = 442 - ((298 * winheight(0) + 18) / 36)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
@@ -778,7 +725,7 @@ setlocal nowinfixheight
 setlocal nowinfixwidth
 setlocal wrap
 setlocal wrapmargin=0
-let s:l = 1 - ((0 * winheight(0) + 19) / 38)
+let s:l = 1 - ((0 * winheight(0) + 18) / 36)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
@@ -901,7 +848,7 @@ setlocal nowinfixheight
 setlocal nowinfixwidth
 setlocal wrap
 setlocal wrapmargin=0
-let s:l = 24 - ((8 * winheight(0) + 19) / 38)
+let s:l = 24 - ((8 * winheight(0) + 18) / 36)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
@@ -1024,7 +971,7 @@ setlocal nowinfixheight
 setlocal nowinfixwidth
 setlocal wrap
 setlocal wrapmargin=0
-let s:l = 1 - ((0 * winheight(0) + 19) / 38)
+let s:l = 1 - ((0 * winheight(0) + 18) / 36)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
@@ -1147,9 +1094,7 @@ setlocal nowinfixheight
 setlocal nowinfixwidth
 setlocal wrap
 setlocal wrapmargin=0
-31
-normal! zo
-let s:l = 42 - ((41 * winheight(0) + 19) / 38)
+let s:l = 42 - ((39 * winheight(0) + 18) / 36)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
@@ -1272,13 +1217,13 @@ setlocal nowinfixheight
 setlocal nowinfixwidth
 setlocal wrap
 setlocal wrapmargin=0
-let s:l = 1 - ((0 * winheight(0) + 19) / 38)
+let s:l = 1 - ((0 * winheight(0) + 18) / 36)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
 1
 normal! 0
-tabnext 2
+tabnext 1
 set stal=1
 if exists('s:wipebuf')
   silent exe 'bwipe ' . s:wipebuf
