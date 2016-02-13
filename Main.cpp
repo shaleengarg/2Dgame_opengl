@@ -16,7 +16,7 @@
 #include "Untouchable.h"
 #include "Controls.h"
 #define MAX_MAP 1000
-#define MAP_CUBE_SIZE 2
+#define MAP_CUBE_SIZE 10
 
 using namespace std;
 GLuint programID,  textureProgramID;
@@ -31,6 +31,8 @@ int MAP[MAX_MAP];
 int No_cubes;
 bool TopView = false;
 bool TowerView = true;
+bool AdventurerView = false;
+bool FollowView = false;
 
 static void error_callback(int error, const char* description)
 {
@@ -93,8 +95,14 @@ void draw ()
         Matrices.view = glm::lookAt(glm::vec3(Human.x, Human.y-1, Human.z+10), glm::vec3(Human.x, Human.y, Human.z), glm::vec3(0,0,1)); // Fixed camera for 2D (ortho) in XY plane
         cout << Human.x << " " << Human.y << " " << Human.z << endl;
     }
-    // Compute ViewProject matrix as view/camera might not be changed for this frame (basic scenario)
-    //  Don't change unless you are sure!!
+    else if(FollowView == true)
+    {
+        Matrices.view = glm::lookAt(glm::vec3(Human.x, Human.y-5, Human.z+5), glm::vec3(Human.x, Human.y, Human.z), glm::vec3(0,0,1));
+    }
+    else if(AdventurerView == true)
+    {
+        Matrices.view = glm::lookAt(glm::vec3(Human.x+2, Human.y-1, Human.z), glm::vec3(Human.x+10, Human.y+10, Human.z), glm::vec3(0,0,1));
+    }
     glm::mat4 VP = Matrices.projection * Matrices.view;
 
     // Send our transformation to the currently bound shader, in the "MVP" uniform
@@ -220,6 +228,8 @@ GLFWwindow* initGLFW (int width, int height)
 
     /* Register function to handle mouse click */
     glfwSetMouseButtonCallback(window, mouseButton);  // mouse button clicks
+
+    glfwSetCursorPosCallback(window, CursorPosition);
 
     return window;
 }

@@ -65,6 +65,7 @@ badd +1 Untouchable.h
 badd +1 Objects.cpp
 badd +1 MAP.txt
 badd +1 Controls.cpp
+badd +0 Untouchable.cpp
 argglobal
 silent! argdel *
 argadd Main.cpp
@@ -327,34 +328,34 @@ setlocal nowinfixheight
 setlocal nowinfixwidth
 setlocal wrap
 setlocal wrapmargin=0
-66
+68
 normal! zo
-156
+90
 normal! zo
-182
+94
 normal! zo
-209
+158
 normal! zo
-230
+184
 normal! zo
-258
+211
 normal! zo
-261
+234
 normal! zo
-308
+262
 normal! zo
-319
+312
 normal! zo
-let s:l = 256 - ((16 * winheight(0) + 18) / 36)
+let s:l = 110 - ((32 * winheight(0) + 18) / 36)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-256
-normal! 018|
+110
+normal! 0
 wincmd w
 exe 'vert 1resize ' . ((&columns * 30 + 84) / 169)
 exe 'vert 2resize ' . ((&columns * 138 + 84) / 169)
-tabedit MAP.txt
+tabedit Main.h
 set splitbelow splitright
 set nosplitbelow
 set nosplitright
@@ -371,13 +372,13 @@ setlocal breakindentopt=
 setlocal bufhidden=
 setlocal buflisted
 setlocal buftype=
-setlocal nocindent
+setlocal cindent
 setlocal cinkeys=0{,0},0),:,0#,!^F,o,O,e
 setlocal cinoptions=
 setlocal cinwords=if,else,while,do,for,switch
 setlocal colorcolumn=
-setlocal comments=fb:-,fb:*
-setlocal commentstring=
+setlocal comments=sO:*\ -,mO:*\ \ ,exO:*/,s1:/*,mb:*,ex:*/,://
+setlocal commentstring=/*%s*/
 setlocal complete=.,w,b,u,t,i
 setlocal concealcursor=
 setlocal conceallevel=0
@@ -393,8 +394,8 @@ setlocal nodiff
 setlocal equalprg=
 setlocal errorformat=
 setlocal expandtab
-if &filetype != 'text'
-setlocal filetype=text
+if &filetype != 'cpp'
+setlocal filetype=cpp
 endif
 setlocal fixendofline
 setlocal foldcolumn=0
@@ -410,7 +411,7 @@ setlocal foldminlines=1
 setlocal foldnestmax=20
 setlocal foldtext=foldtext()
 setlocal formatexpr=
-setlocal formatoptions=tcq
+setlocal formatoptions=croql
 setlocal formatlistpat=^\\s*\\d\\+[\\]:.)}\\t\ ]\\s*
 setlocal grepprg=
 setlocal iminsert=0
@@ -435,7 +436,7 @@ set number
 setlocal number
 set numberwidth=5
 setlocal numberwidth=5
-setlocal omnifunc=
+setlocal omnifunc=ccomplete#Complete
 setlocal path=
 setlocal nopreserveindent
 setlocal nopreviewwindow
@@ -457,8 +458,8 @@ setlocal statusline=
 setlocal suffixesadd=
 setlocal swapfile
 setlocal synmaxcol=3000
-if &syntax != 'text'
-setlocal syntax=text
+if &syntax != 'cpp'
+setlocal syntax=cpp
 endif
 setlocal tabstop=5
 setlocal tagcase=
@@ -471,12 +472,12 @@ setlocal nowinfixheight
 setlocal nowinfixwidth
 setlocal wrap
 setlocal wrapmargin=0
-let s:l = 6 - ((5 * winheight(0) + 18) / 36)
+let s:l = 23 - ((22 * winheight(0) + 18) / 36)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-6
-normal! 0
+23
+normal! 023|
 tabedit Objects.cpp
 set splitbelow splitright
 set nosplitbelow
@@ -596,19 +597,23 @@ setlocal wrap
 setlocal wrapmargin=0
 41
 normal! zo
-118
+117
 normal! zo
-144
+143
 normal! zo
-286
+285
 normal! zo
-let s:l = 442 - ((298 * winheight(0) + 18) / 36)
+440
+normal! zo
+452
+normal! zo
+let s:l = 53 - ((23 * winheight(0) + 18) / 36)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-442
-normal! 06|
-tabedit Main.h
+53
+normal! 0
+tabedit Objects.h
 set splitbelow splitright
 set nosplitbelow
 set nosplitright
@@ -653,7 +658,7 @@ endif
 setlocal fixendofline
 setlocal foldcolumn=0
 set nofoldenable
-setlocal nofoldenable
+setlocal foldenable
 setlocal foldexpr=0
 setlocal foldignore=#
 setlocal foldlevel=0
@@ -725,11 +730,11 @@ setlocal nowinfixheight
 setlocal nowinfixwidth
 setlocal wrap
 setlocal wrapmargin=0
-let s:l = 1 - ((0 * winheight(0) + 18) / 36)
+let s:l = 8 - ((5 * winheight(0) + 18) / 36)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-1
+8
 normal! 0
 tabedit Controls.cpp
 set splitbelow splitright
@@ -977,7 +982,7 @@ exe s:l
 normal! zt
 1
 normal! 0
-tabedit Objects.h
+tabedit Untouchable.cpp
 set splitbelow splitright
 set nosplitbelow
 set nosplitright
@@ -1022,7 +1027,7 @@ endif
 setlocal fixendofline
 setlocal foldcolumn=0
 set nofoldenable
-setlocal foldenable
+setlocal nofoldenable
 setlocal foldexpr=0
 setlocal foldignore=#
 setlocal foldlevel=0
@@ -1094,11 +1099,11 @@ setlocal nowinfixheight
 setlocal nowinfixwidth
 setlocal wrap
 setlocal wrapmargin=0
-let s:l = 42 - ((39 * winheight(0) + 18) / 36)
+let s:l = 1 - ((0 * winheight(0) + 18) / 36)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-42
+1
 normal! 0
 tabedit Untouchable.h
 set splitbelow splitright
@@ -1223,7 +1228,7 @@ exe s:l
 normal! zt
 1
 normal! 0
-tabnext 1
+tabnext 7
 set stal=1
 if exists('s:wipebuf')
   silent exe 'bwipe ' . s:wipebuf
@@ -1238,4 +1243,3 @@ let &so = s:so_save | let &siso = s:siso_save
 doautoall SessionLoadPost
 unlet SessionLoad
 " vim: set ft=vim :
-hi Tabline ctermfg=LightGreen

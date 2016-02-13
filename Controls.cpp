@@ -41,24 +41,42 @@ void keyboard (GLFWwindow* window, int key, int scancode, int action, int mods)
                 quit(window);
                 break;
             case GLFW_KEY_UP:
-                Human.y -= 0.5;
+                Human.y -= 1;
                 break;
             case GLFW_KEY_DOWN:
-                Human.y += 0.5;
+                Human.y += 1;
                 break;
             case GLFW_KEY_RIGHT:
-                Human.x -= 0.5;
+                Human.x -= 1;
                 break;
             case GLFW_KEY_LEFT:
-                Human.x += 0.5;
+                Human.x += 1;
                 break;
             case GLFW_KEY_T:       //TOPVIEW
                 TowerView = false;
+                FollowView = false;
                 TopView = true;
                 break;
             case GLFW_KEY_Y:        //Tower View
                 TopView = false;
+                FollowView = false;
                 TowerView = true;
+                break;
+            case GLFW_KEY_A:
+                //Adventurer View
+                TopView = false;
+                FollowView = false;
+                TowerView = false;
+                AdventurerView = true;
+                break;
+            case GLFW_KEY_F:
+                //Follow cam
+                TopView = false;
+                TowerView = false;
+                FollowView = true;
+                break;
+            case GLFW_KEY_H:
+                //Helicopter view
                 break;
             default:
                 break;
@@ -117,4 +135,8 @@ void mouseButton (GLFWwindow* window, int button, int action, int mods)
         default:
             break;
     }
+}
+
+void CursorPosition (GLFWwindow* window, double x, double y)
+{
 }

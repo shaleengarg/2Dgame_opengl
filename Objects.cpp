@@ -49,8 +49,7 @@ typedef struct cub{
     VAO *cube;
 }Cubes;
 
-Cubes Cube[MAX_CUBES];
-Cubes Human;
+Cubes Cube[MAX_CUBES], Human;
 
 VAO *triangle, *rectangle, *X, *Y, *Z;
 
@@ -439,9 +438,9 @@ void createCubes(int Cube_no, float x, float y, float z, float length, float wid
 
 void createHuman()
 {
-    Human.length = 2;
-    Human.width = 2;
-    Human.height =4;
+    Human.length = 3;
+    Human.width = 3;
+    Human.height = 2;
     Human.x = 18;
     Human.y = 18;
     Human.z = 20;

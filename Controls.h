@@ -1,6 +1,7 @@
 void keyboard (GLFWwindow*, int, int, int, int);
 void keyboardChar (GLFWwindow* , unsigned int);
 void mouseButton (GLFWwindow*, int, int, int);
+void CursorPosition (GLFWwindow*, double , double );
 
 extern float triangle_rot_dir;
 extern float rectangle_rot_dir;

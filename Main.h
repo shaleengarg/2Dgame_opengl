@@ -19,3 +19,5 @@ extern GLuint programID,  textureProgramID;
 extern int MAP[MAX_MAP];
 extern bool TopView;
 extern bool TowerView;
+extern bool AdventurerView;
+extern bool FollowView;
