@@ -1068,3 +1068,4 @@ let &so = s:so_save | let &siso = s:siso_save
 doautoall SessionLoadPost
 unlet SessionLoad
 " vim: set ft=vim :
+hi Tabline ctermfg=LightGreen

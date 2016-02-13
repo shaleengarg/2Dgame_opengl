@@ -15,15 +15,16 @@
 #include "Untouchable.h"
 #include "Main.h"
 
-
+using namespace std;
 bool AngleChangeFlag = false;  // For mouse controls to change the angles
 float Topzoom = 10;
 float Followzoom = 0;
 float Towerzoom = 25;
+double OldCursorX = Human.x;
+double OldCursorY = Human.y;
 
 void keyboard (GLFWwindow* window, int key, int scancode, int action, int mods)
 {
-    // Function is called first on GLFW_PRESS.
     if (action == GLFW_RELEASE) {
         switch (key) {
             case GLFW_KEY_C:
@@ -127,7 +128,6 @@ void keyboard (GLFWwindow* window, int key, int scancode, int action, int mods)
     }
 }
 
-/* Executed for character input (like in text boxes) */
 void keyboardChar (GLFWwindow* window, unsigned int key)
 {
     switch (key) {
@@ -140,7 +140,6 @@ void keyboardChar (GLFWwindow* window, unsigned int key)
     }
 }
 
-/* Executed when a mouse button is pressed/released */
 void mouseButton (GLFWwindow* window, int button, int action, int mods)
 {
     switch (button) {
@@ -160,12 +159,18 @@ void mouseButton (GLFWwindow* window, int button, int action, int mods)
 
 void CursorPosition (GLFWwindow* window, double x, double y)
 {
-    if(AngleChangeFlag == true)
-    {
-    }
+    Theta += (x-OldCursorX);
+    Phi += (y-OldCursorY);
+    OldCursorX = x;
+    OldCursorY = y;
 }
 
 void Scroll (GLFWwindow* window, double x, double y)
 {
-   // this will change the zoom. 
+    if(y <0)
+    {
+        Roh -= 0.7;
+    }
+    else
+        Roh += 0.7;
 }

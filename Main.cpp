@@ -116,9 +116,10 @@ void draw ()
     else if(HelicopterView == true)
     {
         float X, Y, Z;
-        X = Roh * cos(Theta*M_PI/180)*sin(Phi*M_PI/180) + Human.x;
-        Y = Roh * sin(Theta*M_PI/180)*sin(Phi*M_PI/180) + Human.y;
-        Z = Roh * cos(Phi*M_PI/180);
+        X = (Roh * cos(Theta*M_PI/180)*sin(Phi*M_PI/180)) + Human.x;
+        Y = (Roh * sin(Theta*M_PI/180)*sin(Phi*M_PI/180)) + Human.y;
+        Z = Roh *cos(Phi*M_PI/180);
+        //cout << X << " " << Y << " " << Z << endl;
         Matrices.view = glm::lookAt(glm::vec3(X, Y, Z), glm::vec3(Human.x, Human.y, Human.z), glm::vec3(0,0,1));
     // Helicopter view to be implemented
     }
