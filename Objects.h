@@ -38,6 +38,8 @@ typedef struct Cub{
     float width;
     GLuint textureID;
     VAO* cube;
+    bool move;
+    bool direction;
 }Cubes;
 
 extern Cubes Cube[MAX_CUBES], Human; 

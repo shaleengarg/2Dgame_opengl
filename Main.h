@@ -1,4 +1,5 @@
 #define MAX_MAP 1000
+#define MAP_CUBE_SIZE 10
 
 void reshapeWindow (GLFWwindow*, int, int);
 static void error_callback(int, const char*);
@@ -21,3 +22,4 @@ extern bool TopView;
 extern bool TowerView;
 extern bool AdventurerView;
 extern bool FollowView;
+extern float AdventureViewAngle;

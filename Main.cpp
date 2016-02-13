@@ -4,6 +4,9 @@
 #include <vector>
 #include <fstream>
 #include <string>
+#include <time.h>
+#include <stdlib.h>
+
 #define GLM_FORCE_RADIANS
 #include <glm/glm.hpp>
 #include <glm/gtx/transform.hpp>
@@ -17,6 +20,7 @@
 #include "Controls.h"
 #define MAX_MAP 1000
 #define MAP_CUBE_SIZE 10
+#define MAX_DISP 5
 
 using namespace std;
 GLuint programID,  textureProgramID;
@@ -33,6 +37,7 @@ bool TopView = false;
 bool TowerView = true;
 bool AdventurerView = false;
 bool FollowView = false;
+float AdventureViewAngle = -1;
 
 static void error_callback(int error, const char* description)
 {
@@ -88,20 +93,20 @@ void draw ()
     //Matrices.view = glm::lookAt(glm::vec3(1,0,3), glm::vec3(0,0,0), glm::vec3(sinf(c*M_PI/180.0),3*cosf(c*M_PI/180.0),0)); // Fixed camera for 2D (ortho) in XY plane
     if(TowerView == true)
     {
-        Matrices.view = glm::lookAt(glm::vec3(25, 25, 25), glm::vec3(Human.x, Human.y, Human.z), glm::vec3(0, 0, 1)); // Fixed camera for 2D (ortho) in XY plane
+        Matrices.view = glm::lookAt(glm::vec3(Towerzoom, Towerzoom, Towerzoom), glm::vec3(Human.x, Human.y, Human.z), glm::vec3(0, 0, 1)); // Fixed camera for 2D (ortho) in XY plane
     }
     else if(TopView == true)
     {
-        Matrices.view = glm::lookAt(glm::vec3(Human.x, Human.y-1, Human.z+10), glm::vec3(Human.x, Human.y, Human.z), glm::vec3(0,0,1)); // Fixed camera for 2D (ortho) in XY plane
-        cout << Human.x << " " << Human.y << " " << Human.z << endl;
+        Matrices.view = glm::lookAt(glm::vec3(Human.x, Human.y-1, Human.z+Topzoom), glm::vec3(Human.x, Human.y, Human.z), glm::vec3(0,0,1)); // Fixed camera for 2D (ortho) in XY plane
+        //cout << Human.x << " " << Human.y << " " << Human.z << endl;
     }
     else if(FollowView == true)
     {
-        Matrices.view = glm::lookAt(glm::vec3(Human.x, Human.y-5, Human.z+5), glm::vec3(Human.x, Human.y, Human.z), glm::vec3(0,0,1));
+        Matrices.view = glm::lookAt(glm::vec3(Human.x, Human.y-5 + Followzoom, Human.z+5+Followzoom), glm::vec3(Human.x, Human.y, Human.z), glm::vec3(0,0,1));
     }
     else if(AdventurerView == true)
     {
-        Matrices.view = glm::lookAt(glm::vec3(Human.x+2, Human.y-1, Human.z), glm::vec3(Human.x+10, Human.y+10, Human.z), glm::vec3(0,0,1));
+        Matrices.view = glm::lookAt(glm::vec3(Human.x+2, (Human.y+AdventureViewAngle), Human.z), glm::vec3(Human.x+10, Human.y+10, Human.z), glm::vec3(0,0,1));
     }
     glm::mat4 VP = Matrices.projection * Matrices.view;
 
@@ -163,7 +168,22 @@ void draw ()
     for (i=0; i < No_cubes; i++)
     {
         Matrices.model = glm::mat4(1.0f);
-        translateCubes = glm::translate (glm::vec3(Cube[i].x, Cube[i].y, Cube[i].z));        // glTranslatef
+        if(Cube[i].move == true)
+        {
+            if(Cube[i].direction == 1)  // MOVE UP
+            {
+                Cube[i].z += 0.2;
+                if(Cube[i].z >= MAX_DISP)
+                    Cube[i].direction = 0;
+            }
+            else                       // MOVE DOWN
+            {
+                Cube[i].z -= 0.2;
+                if(Cube[i].z <= -MAX_DISP)
+                    Cube[i].direction = 1;
+            }
+        }
+        translateCubes = glm::translate (glm::vec3(Cube[i].x, Cube[i].y, Cube[i].z));
         Matrices.model *= translateCubes;
         MVP = VP * Matrices.model;
         glUniformMatrix4fv(Matrices.TexMatrixID, 1, GL_FALSE, &MVP[0][0]);
@@ -230,7 +250,7 @@ GLFWwindow* initGLFW (int width, int height)
     glfwSetMouseButtonCallback(window, mouseButton);  // mouse button clicks
 
     glfwSetCursorPosCallback(window, CursorPosition);
-
+    glfwSetScrollCallback(window, Scroll);
     return window;
 }
 
@@ -269,23 +289,22 @@ void initGL (GLFWwindow* window, int width, int height)
         char line[128];
         while(fgets(line, sizeof line, Map_file) != NULL)
         {
-            cout << "hello " << endl;
             i = 0;
             index =0;
             while(line[index] != '\0')
             {
                 if(line[index] != '0')
                 {
-                    cout << "line[index] : "<< (int)line[index] << endl;
+                    //cout << "line[index] : "<< (int)line[index] << endl;
                     No_cubes += 1;
                     Cube[No_cubes].x = i*MAP_CUBE_SIZE;
                     Cube[No_cubes].y = j*MAP_CUBE_SIZE;
-                    //                cout << "Z original " << (int)line[index] << endl;
+                    // cout << "Z original " << (int)line[index] << endl;
                     Cube[No_cubes].z = (int)(line[index] - '0');
                     createCubes(No_cubes, Cube[No_cubes].x, Cube[No_cubes].y, Cube[No_cubes].z, MAP_CUBE_SIZE, MAP_CUBE_SIZE, MAP_CUBE_SIZE, textureID);
                 }
                 i += 1;        
-                cout << "came here" << endl;
+                //cout << "came here" << endl;
                 index += 1;
             }
             j += 1;
@@ -318,6 +337,7 @@ int main (int argc, char** argv)
 {
     int width = 700;
     int height = 700;
+    srand(time(NULL));
 
     GLFWwindow* window = initGLFW(width, height);
 

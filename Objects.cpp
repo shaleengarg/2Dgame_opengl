@@ -47,6 +47,8 @@ typedef struct cub{
     float width;
     GLuint textureID;
     VAO *cube;
+    bool move;
+    bool direction;
 }Cubes;
 
 Cubes Cube[MAX_CUBES], Human;
@@ -290,6 +292,13 @@ void createCubes(int Cube_no, float x, float y, float z, float length, float wid
     Cube[Cube_no].y = y; 
     Cube[Cube_no].z = z; 
     Cube[Cube_no].textureID = textureID;
+    if(Cube_no!= 0)
+    {
+        int M = rand()%2;
+        int N = rand()%2;
+        Cube[Cube_no].move = M; 
+        Cube[Cube_no].direction = N;
+    }
 
     static const GLfloat vertex_buffer_data [] ={
         //left face
@@ -441,9 +450,10 @@ void createHuman()
     Human.length = 3;
     Human.width = 3;
     Human.height = 2;
-    Human.x = 18;
-    Human.y = 18;
-    Human.z = 20;
+    Human.x = 0;
+    Human.y = 0;
+    Human.z = MAP_CUBE_SIZE;
+
     int length, width, height;
     length = Human.length;
     width = Human.height ;

@@ -16,14 +16,19 @@
 #include "Main.h"
 
 
+bool AngleChangeFlag = false;  // For mouse controls to change the angles
+float Topzoom = 10;
+float Followzoom = 0;
+float Towerzoom = 25;
+
 void keyboard (GLFWwindow* window, int key, int scancode, int action, int mods)
 {
     // Function is called first on GLFW_PRESS.
-
     if (action == GLFW_RELEASE) {
         switch (key) {
             case GLFW_KEY_C:
-                rectangle_rot_status = !rectangle_rot_status;
+                //Flag down
+                AngleChangeFlag = false;
                 break;
             case GLFW_KEY_P:
                 triangle_rot_status = !triangle_rot_status;
@@ -77,6 +82,10 @@ void keyboard (GLFWwindow* window, int key, int scancode, int action, int mods)
                 break;
             case GLFW_KEY_H:
                 //Helicopter view
+                break;
+            case GLFW_KEY_C:
+                //flag up
+                AngleChangeFlag = true;
                 break;
             default:
                 break;
@@ -139,4 +148,12 @@ void mouseButton (GLFWwindow* window, int button, int action, int mods)
 
 void CursorPosition (GLFWwindow* window, double x, double y)
 {
+    if(AngleChangeFlag == true)
+    {
+    }
+}
+
+void Scroll (GLFWwindow* window, double x, double y)
+{
+   // this will change the zoom. 
 }
