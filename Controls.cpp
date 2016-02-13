@@ -59,12 +59,16 @@ void keyboard (GLFWwindow* window, int key, int scancode, int action, int mods)
                 break;
             case GLFW_KEY_T:       //TOPVIEW
                 TowerView = false;
+                HelicopterView = false;
                 FollowView = false;
+                AdventurerView = false;
                 TopView = true;
                 break;
             case GLFW_KEY_Y:        //Tower View
                 TopView = false;
                 FollowView = false;
+                HelicopterView = false;
+                AdventurerView = false;
                 TowerView = true;
                 break;
             case GLFW_KEY_A:
@@ -72,16 +76,24 @@ void keyboard (GLFWwindow* window, int key, int scancode, int action, int mods)
                 TopView = false;
                 FollowView = false;
                 TowerView = false;
+                HelicopterView = false;
                 AdventurerView = true;
                 break;
             case GLFW_KEY_F:
                 //Follow cam
                 TopView = false;
                 TowerView = false;
+                AdventurerView = false;
+                HelicopterView = false;
                 FollowView = true;
                 break;
             case GLFW_KEY_H:
                 //Helicopter view
+                TopView = false;
+                TowerView = false;
+                FollowView = false;
+                AdventurerView = false;
+                HelicopterView = true;
                 break;
             case GLFW_KEY_C:
                 //flag up

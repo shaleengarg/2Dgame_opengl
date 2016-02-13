@@ -22,4 +22,8 @@ extern bool TopView;
 extern bool TowerView;
 extern bool AdventurerView;
 extern bool FollowView;
+extern bool HelicopterView;
 extern float AdventureViewAngle;
+extern float Roh;
+extern float Theta;
+extern float Phi;

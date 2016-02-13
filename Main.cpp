@@ -20,7 +20,7 @@
 #include "Controls.h"
 #define MAX_MAP 1000
 #define MAP_CUBE_SIZE 10
-#define MAX_DISP 5
+#define MAX_DISP 4
 
 using namespace std;
 GLuint programID,  textureProgramID;
@@ -33,11 +33,16 @@ float rectangle_rotation = 0;
 float triangle_rotation = 0;
 int MAP[MAX_MAP];
 int No_cubes;
+
 bool TopView = false;
-bool TowerView = true;
+bool TowerView = false;
 bool AdventurerView = false;
-bool FollowView = false;
+bool FollowView = true;
+bool HelicopterView = false;
 float AdventureViewAngle = -1;
+float Roh = 20;
+float Theta = 45;
+float Phi = 45;
 
 static void error_callback(int error, const char* description)
 {
@@ -106,7 +111,16 @@ void draw ()
     }
     else if(AdventurerView == true)
     {
-        Matrices.view = glm::lookAt(glm::vec3(Human.x+2, (Human.y+AdventureViewAngle), Human.z), glm::vec3(Human.x+10, Human.y+10, Human.z), glm::vec3(0,0,1));
+        Matrices.view = glm::lookAt(glm::vec3(Human.x, Human.y+1, Human.z+2), glm::vec3(Human.x+AdventureViewAngle, Human.y+10, Human.z), glm::vec3(0,0,1));
+    }
+    else if(HelicopterView == true)
+    {
+        float X, Y, Z;
+        X = Roh * cos(Theta*M_PI/180)*sin(Phi*M_PI/180) + Human.x;
+        Y = Roh * sin(Theta*M_PI/180)*sin(Phi*M_PI/180) + Human.y;
+        Z = Roh * cos(Phi*M_PI/180);
+        Matrices.view = glm::lookAt(glm::vec3(X, Y, Z), glm::vec3(Human.x, Human.y, Human.z), glm::vec3(0,0,1));
+    // Helicopter view to be implemented
     }
     glm::mat4 VP = Matrices.projection * Matrices.view;
 
