@@ -15,3 +15,4 @@ extern bool AngleChangeFlag;
 extern float Topzoom;
 extern float Followzoom;
 extern float Towerzoom;
+extern bool HeliChange; // for click and change the angle

@@ -22,6 +22,7 @@ float Followzoom = 0;
 float Towerzoom = 25;
 double OldCursorX = Human.x;
 double OldCursorY = Human.y;
+bool HeliChange; // for click and change the angle
 
 void keyboard (GLFWwindow* window, int key, int scancode, int action, int mods)
 {
@@ -144,12 +145,11 @@ void mouseButton (GLFWwindow* window, int button, int action, int mods)
 {
     switch (button) {
         case GLFW_MOUSE_BUTTON_LEFT:
-            if (action == GLFW_RELEASE)
-                triangle_rot_dir *= -1;
-            break;
-        case GLFW_MOUSE_BUTTON_RIGHT:
-            if (action == GLFW_RELEASE) {
-                rectangle_rot_dir *= -1;
+            if (action == GLFW_PRESS) {
+                HeliChange = true;
+            }
+            else if (action == GLFW_RELEASE){
+                HeliChange = false;
             }
             break;
         default:
@@ -159,10 +159,13 @@ void mouseButton (GLFWwindow* window, int button, int action, int mods)
 
 void CursorPosition (GLFWwindow* window, double x, double y)
 {
-    Theta += (x-OldCursorX);
-    Phi += (y-OldCursorY);
-    OldCursorX = x;
-    OldCursorY = y;
+    if(HeliChange == true)
+    {
+        Theta += (x-OldCursorX);
+        Phi += (y-OldCursorY);
+        OldCursorX = x;
+        OldCursorY = y;
+    } 
 }
 
 void Scroll (GLFWwindow* window, double x, double y)
