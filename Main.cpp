@@ -185,10 +185,22 @@ void draw ()
     //Checking collision with ground and objects
     for(i=0; i < No_cubes; i++)
     {
-        //Collision using clamp
-                
+        glm::vec3 center(Human.x, Human.y, Human.z);
+        glm::vec3 aabb_half_extents(Cube[i].length/2, Cube[i].width/2, Cube[i].height/2);
+        glm::vec3 aabb_center(Cube[i].x, Cube[i].y, Cube[i].z);
+        glm::vec3 difference = center - aabb_center;
+        glm::vec3 clamped = glm::clamp(difference, -aabb_half_extents, aabb_half_extents);
+        glm::vec3 closest = aabb_center + clamped;
+        difference = closest - center;
+        if(glm::length(difference) < Human.radius)
+        {
+            cout << "collisions with :" << i << endl;
+            if (Cube[i].move == 1)
+                cout << "dead !!!"  << endl;
+        }
     }
 }
+
 
 void initGL (GLFWwindow* window, int width, int height)
 {

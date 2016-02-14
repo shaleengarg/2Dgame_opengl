@@ -267,8 +267,6 @@ void createCubes(int Cube_no, float x, float y, float z, float length, float wid
     Cube[Cube_no].y = y; 
     Cube[Cube_no].z = z; 
     Cube[Cube_no].textureID = textureID;
-    Cube[Cube_no].radius = sqrt(pow(Cube[Cube_no].length, 2)+pow(Cube[Cube_no].width, 2)+pow(Cube[Cube_no].height, 2));
-    Cube[Cube_no].radius /= 1.1;
     if(Cube_no!= 0)
     {
         if(Cube_no%5 == 0)

@@ -150,7 +150,6 @@ void mouseButton (GLFWwindow* window, int button, int action, int mods)
     switch (button) {
         case GLFW_MOUSE_BUTTON_LEFT:
             if (action == GLFW_PRESS) {
-                cout << "click" << endl;
                 HeliChange = true;
                 AdChange = true;
             }
@@ -166,17 +165,14 @@ void mouseButton (GLFWwindow* window, int button, int action, int mods)
 
 void CursorPosition (GLFWwindow* window, double x, double y)
 {
-    cout << "here" << endl;
     if(HeliChange == true)
     {
-        cout << AdventureViewAngle << endl;
         Theta += (x-OldCursorX);
         Phi += (y-OldCursorY);
     } 
     if(AdChange == true)
     {
         AdventureViewAngle += x-OldCursorX;
-        cout << AdventureViewAngle << endl;
     }
 
     OldCursorX = x;
