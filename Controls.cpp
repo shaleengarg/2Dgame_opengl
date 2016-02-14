@@ -54,10 +54,10 @@ void keyboard (GLFWwindow* window, int key, int scancode, int action, int mods)
                 Human.direction = 1;
                 break;
             case GLFW_KEY_UP:
-                Human.y -= 1;
+                Human.y += 1;
                 break;
             case GLFW_KEY_DOWN:
-                Human.y += 1;
+                Human.y -= 1;
                 break;
             case GLFW_KEY_RIGHT:
                 Human.x -= 1;
@@ -117,10 +117,10 @@ void keyboard (GLFWwindow* window, int key, int scancode, int action, int mods)
                 quit(window);
                 break;
             case GLFW_KEY_UP:
-                Human.y -= 0.5;
+                Human.y += 0.5;
                 break;
             case GLFW_KEY_DOWN:
-                Human.y += 0.5;
+                Human.y -= 0.5;
                 break;
             case GLFW_KEY_RIGHT:
                 Human.x -= 0.5;

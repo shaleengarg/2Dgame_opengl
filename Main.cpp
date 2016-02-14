@@ -6,6 +6,7 @@
 #include <string>
 #include <time.h>
 #include <stdlib.h>
+#include <irrklang/irrKlang.h>
 
 #define GLM_FORCE_RADIANS
 #include <glm/glm.hpp>
@@ -24,6 +25,9 @@
 #define MAX_JUMP 14
 
 using namespace std;
+using namespace irrklang;
+
+
 GLuint programID,  textureProgramID;
 float triangle_rot_dir = 1;
 float rectangle_rot_dir = -1;
@@ -45,6 +49,7 @@ float Roh = 20;
 float Theta = 45;
 float Phi = 45;
 
+ISoundEngine *SoundEngine = createIrrKlangDevice();
 
 void draw ()
 {
@@ -351,7 +356,7 @@ int main (int argc, char** argv)
     GLFWwindow* window = initGLFW(width, height);
 
     initGL (window, width, height);
-
+    SoundEngine->play2D("1.mp3", GL_TRUE);
     double last_update_time = glfwGetTime(), current_time;
 
     /* Draw in loop */
