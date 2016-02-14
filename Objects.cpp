@@ -2,6 +2,8 @@
 #include <cmath>
 #include <fstream>
 #include <vector>
+#include <math.h>
+
 #define GLM_FORCE_RADIANS
 #include <glm/glm.hpp>
 #include <glm/gtx/transform.hpp>
@@ -49,71 +51,30 @@ typedef struct cub{
     VAO *cube;
     bool move;
     bool direction;
+    float vx;
+    float vy;
+    float vz;
+    float radius;
 }Cubes;
 
-Cubes Cube[MAX_CUBES], Human;
+typedef struct S{
+    float x;
+    float y; 
+    float z;
+    float radius;
+    float vx;
+    float vy;
+    float vz;
+    VAO *sphere;
+    GLuint textureID;
+
+}Sphere;
+
+Cubes Cube[MAX_CUBES];
+Sphere Human;
 
 VAO *triangle, *rectangle, *X, *Y, *Z;
 
-void createTriangle ()
-{
-    /* ONLY vertices between the bounds specified in glm::ortho will be visible on screen */
-
-    /* Define vertex array as used in glBegin (GL_TRIANGLES) */
-    static const GLfloat vertex_buffer_data [] = {
-        0, 1,0, // vertex 0
-        -1,-1,0, // vertex 1
-        1,-1,0, // vertex 2
-    };
-
-    static const GLfloat color_buffer_data [] = {
-        1,0,0, // color 0
-        0,1,0, // color 1
-        0,0,1, // color 2
-    };
-
-    // create3DObject creates and returns a handle to a VAO that can be used later
-    triangle = create3DObject(GL_TRIANGLES, 3, vertex_buffer_data, color_buffer_data, GL_LINE);
-}
-
-// Creates the rectangle object used in this sample code
-void createRectangle (GLuint textureID)
-{
-    // GL3 accepts only Triangles. Quads are not supported
-    static const GLfloat vertex_buffer_data [] = {
-        -1.2,-1,0, // vertex 1
-        1.2,-1,0, // vertex 2
-        1.2, 1,0, // vertex 3
-
-        1.2, 1,0, // vertex 3
-        -1.2, 1,0, // vertex 4
-        -1.2,-1,0  // vertex 1
-    };
-
-    static const GLfloat color_buffer_data [] = {
-        1,0,0, // color 1
-        0,0,1, // color 2
-        0,1,0, // color 3
-
-        0,1,0, // color 3
-        0.3,0.3,0.3, // color 4
-        1,0,0  // color 1
-    };
-
-    // Texture coordinates start with (0,0) at top left of the image to (1,1) at bot right
-    static const GLfloat texture_buffer_data [] = {
-        0,1, // TexCoord 1 - bot left
-        1,1, // TexCoord 2 - bot right
-        1,0, // TexCoord 3 - top right
-
-        1,0, // TexCoord 3 - top right
-        0,0, // TexCoord 4 - top left
-        0,1  // TexCoord 1 - bot left
-    };
-
-    // create3DTexturedObject creates and returns a handle to a VAO that can be used later
-    rectangle = create3DTexturedObject(GL_TRIANGLES, 6, vertex_buffer_data, texture_buffer_data, textureID, GL_FILL);
-}
 
 void createX()
 {
@@ -282,6 +243,20 @@ void createCube(float x)
 
 
 }
+/*
+   int Collision(Cubes A, Cubes B)
+   {
+   bool CX = A.x + A.radius >= B.x && B.x + B.radius >= A.x;
+   bool CY = A.y + A.radius >= B.y && B.y + B.radius >= A.y;
+   bool CZ = A.z + A.radius >= B.z && B.z + B.radius >= A.z;
+
+   bool CX = A->x + A->radius >= B->x && B->x + B->radius >= A->x;
+   bool CY = A->y + A->radius >= B->y && B->y + B->radius >= A->y;
+   bool CZ = A->z + A->radius >= B->z && B->z + B->radius >= A->z;
+
+   return CX && CY && CZ;
+   }
+   */
 
 void createCubes(int Cube_no, float x, float y, float z, float length, float width, float height, GLuint textureID)
 {
@@ -292,12 +267,16 @@ void createCubes(int Cube_no, float x, float y, float z, float length, float wid
     Cube[Cube_no].y = y; 
     Cube[Cube_no].z = z; 
     Cube[Cube_no].textureID = textureID;
+    Cube[Cube_no].radius = sqrt(pow(Cube[Cube_no].length, 2)+pow(Cube[Cube_no].width, 2)+pow(Cube[Cube_no].height, 2));
+    Cube[Cube_no].radius /= 1.1;
     if(Cube_no!= 0)
     {
-        int M = rand()%2;
-        int N = rand()%2;
-        Cube[Cube_no].move = M; 
-        Cube[Cube_no].direction = N;
+        if(Cube_no%5 == 0)
+        {
+            int N = rand()%2;
+            Cube[Cube_no].move = 1; 
+            Cube[Cube_no].direction = N;
+        }
     }
 
     static const GLfloat vertex_buffer_data [] ={
@@ -445,114 +424,153 @@ void createCubes(int Cube_no, float x, float y, float z, float length, float wid
     Cube[Cube_no].cube  = create3DTexturedObject(GL_TRIANGLES, 36, vertex_buffer_data, texture_buffer_data, textureID, GL_FILL);
 }
 
+float DEG2RAD(float x)
+{
+    float a;
+    a = x *M_PI/180;
+    return a;
+}
+
 void createHuman()
 {
-    Human.length = 3;
-    Human.width = 3;
-    Human.height = 2;
+    Human.radius = 2;
     Human.x = 0;
     Human.y = 0;
-    Human.z = MAP_CUBE_SIZE;
-
-    int length, width, height;
-    length = Human.length;
-    width = Human.height ;
-    height = Human.width;
-
-    static const GLfloat vertex_buffer_data [] ={
-        //left face
-        -length/2,height/2,width/2, // vertex 1
-        -length/2,-height/2,width/2, // vertex 2
-        -length/2,-height/2,-width/2, // vertex 3
-
-        -length/2,height/2,width/2, // vertex 1
-        -length/2,-height/2,-width/2, // vertex 3
-        -length/2,height/2,-width/2, //vertex 4
-
-        //front face
-        -length/2,height/2,width/2, // vertex 1
-        length/2,height/2,width/2, // vertex 5
-        -length/2,-height/2,width/2, // vertex 2
-
-        length/2,height/2,width/2, // vertex 5
-        -length/2,-height/2,width/2, // vertex 2
-        length/2,-height/2,width/2, //vertex 6
-
-        //top face
-        -length/2,height/2,width/2, // vertex 1
-        length/2,height/2,width/2, // vertex 5
-        -length/2,height/2,-width/2, //vertex 4
-
-        length/2,height/2,width/2, // vertex 5
-        -length/2,height/2,-width/2, //vertex 4
-        length/2,height/2,-width/2, // vertex 7
-
-        //right face
-        length/2,height/2,width/2, // vertex 5
-        length/2,-height/2,width/2, //vertex 6
-        length/2,height/2,-width/2, // vertex 7
-
-        length/2,-height/2,width/2, //vertex 6
-        length/2,height/2,-width/2, // vertex 7
-        length/2,-height/2,-width/2, //vertex 8
-
-        //Back face
-        -length/2,-height/2,-width/2, // vertex 3
-        -length/2,height/2,-width/2, //vertex 4
-        length/2,height/2,-width/2, // vertex 7
-
-        -length/2,-height/2,-width/2, // vertex 3
-        length/2,-height/2,-width/2, //vertex 8
-        length/2,height/2,-width/2, // vertex 7
-
-        //Bottom face
-        -length/2,-height/2,-width/2, // vertex 3
-        length/2,-height/2,-width/2, //vertex 8
-        length/2,-height/2,width/2, //vertex 6
-
-        -length/2,-height/2,-width/2, // vertex 3
-        -length/2,-height/2,width/2, // vertex 2
-        length/2,-height/2,width/2 //vertex 6
-    };
-
-    static const GLfloat color_buffer_data [] ={
-        1,0,0,
-        1,0,0,
-        1,0,0,
-        1,0,0,
-        1,0,0,
-        1,0,0,
-        1,0,0,
-        1,0,0,
-        1,0,0,
-        1,0,0,
-        1,0,0,
-        1,0,0,
-        1,0,0,
-        1,0,0,
-        1,0,0,
-        1,0,0,
-        1,0,0,
-        1,0,0,
-        1,0,0,
-        1,0,0,
-        1,0,0,
-        1,0,0,
-        1,0,0,
-        1,0,0,
-        1,0,0,
-        1,0,0,
-        1,0,0,
-        1,0,0,
-        1,0,0,
-        1,0,0,
-        1,0,0,
-        1,0,0,
-        1,0,0,
-        1,0,0,
-        1,0,0,
-        1,0,0,
-    };
-    //Removed Texture for Simplicity
-    Human.cube = create3DObject(GL_TRIANGLES, 36, vertex_buffer_data, color_buffer_data, GL_FILL);
+    Human.z = MAP_CUBE_SIZE-2;
+    GLfloat vertex_buffer_data [204410];
+    GLfloat color_buffer_data[204410];
+    int i, j, k=0;
+    for(j=-90; j < 91; j++)
+    {
+        for(i = -180; i < 181; i++)
+        {
+            vertex_buffer_data[k] = Human.radius*cos(DEG2RAD(i))*cos(DEG2RAD(j));
+            color_buffer_data[k] = 1;
+            k++;
+            vertex_buffer_data[k] = Human.radius*sin(DEG2RAD(i))*cos(DEG2RAD(j));
+            color_buffer_data[k] = 0;
+            k++;
+            vertex_buffer_data[k] = Human.radius*sin(DEG2RAD(j));
+            color_buffer_data[k] = 0;
+            k++;
+        }
+    }
+    Human.sphere = create3DObject(GL_TRIANGLE_FAN, 64800, vertex_buffer_data, color_buffer_data, GL_FILL);
 }
+/*
+   void createHuman()
+   {
+   Human.length = 3;
+   Human.width = 3;
+   Human.height = 2;
+   Human.x = 0;
+   Human.y = 0;
+   Human.z = MAP_CUBE_SIZE-3;
+   Human.vx = 0;
+   Human.vy = 0;
+   Human.vz = 0;
+   Human.radius = sqrt(pow(Human.length, 2) + pow(Human.width, 2) + pow(Human.height, 2));
+
+   int length, width, height;
+   length = Human.length;
+   width = Human.height ;
+   height = Human.width;
+
+   static const GLfloat vertex_buffer_data [] ={
+//left face
+-length/2,height/2,width/2, // vertex 1
+-length/2,-height/2,width/2, // vertex 2
+-length/2,-height/2,-width/2, // vertex 3
+
+-length/2,height/2,width/2, // vertex 1
+-length/2,-height/2,-width/2, // vertex 3
+-length/2,height/2,-width/2, //vertex 4
+
+//front face
+-length/2,height/2,width/2, // vertex 1
+length/2,height/2,width/2, // vertex 5
+-length/2,-height/2,width/2, // vertex 2
+
+length/2,height/2,width/2, // vertex 5
+-length/2,-height/2,width/2, // vertex 2
+length/2,-height/2,width/2, //vertex 6
+
+//top face
+-length/2,height/2,width/2, // vertex 1
+length/2,height/2,width/2, // vertex 5
+-length/2,height/2,-width/2, //vertex 4
+
+length/2,height/2,width/2, // vertex 5
+-length/2,height/2,-width/2, //vertex 4
+length/2,height/2,-width/2, // vertex 7
+
+//right face
+length/2,height/2,width/2, // vertex 5
+length/2,-height/2,width/2, //vertex 6
+length/2,height/2,-width/2, // vertex 7
+
+length/2,-height/2,width/2, //vertex 6
+length/2,height/2,-width/2, // vertex 7
+length/2,-height/2,-width/2, //vertex 8
+
+//Back face
+-length/2,-height/2,-width/2, // vertex 3
+-length/2,height/2,-width/2, //vertex 4
+length/2,height/2,-width/2, // vertex 7
+
+-length/2,-height/2,-width/2, // vertex 3
+length/2,-height/2,-width/2, //vertex 8
+length/2,height/2,-width/2, // vertex 7
+
+//Bottom face
+-length/2,-height/2,-width/2, // vertex 3
+length/2,-height/2,-width/2, //vertex 8
+length/2,-height/2,width/2, //vertex 6
+
+-length/2,-height/2,-width/2, // vertex 3
+-length/2,-height/2,width/2, // vertex 2
+    length/2,-height/2,width/2 //vertex 6
+    };
+
+static const GLfloat color_buffer_data [] ={
+    1,0,0,
+    1,0,0,
+    1,0,0,
+    1,0,0,
+    1,0,0,
+    1,0,0,
+    1,0,0,
+    1,0,0,
+    1,0,0,
+    1,0,0,
+    1,0,0,
+    1,0,0,
+    1,0,0,
+    1,0,0,
+    1,0,0,
+    1,0,0,
+    1,0,0,
+    1,0,0,
+    1,0,0,
+    1,0,0,
+    1,0,0,
+    1,0,0,
+    1,0,0,
+    1,0,0,
+    1,0,0,
+    1,0,0,
+    1,0,0,
+    1,0,0,
+    1,0,0,
+    1,0,0,
+    1,0,0,
+    1,0,0,
+    1,0,0,
+    1,0,0,
+    1,0,0,
+    1,0,0,
+};
+//Removed Texture for Simplicity
+Human.cube = create3DObject(GL_TRIANGLES, 36, vertex_buffer_data, color_buffer_data, GL_FILL);
+}
+*/

@@ -44,6 +44,7 @@ float Roh = 20;
 float Theta = 45;
 float Phi = 45;
 
+
 void draw ()
 {
     // clear the color and depth in the frame buffer
@@ -91,7 +92,7 @@ void draw ()
         Z = Roh *cos(Phi*M_PI/180);
         //cout << X << " " << Y << " " << Z << endl;
         Matrices.view = glm::lookAt(glm::vec3(X, Y, Z), glm::vec3(Human.x, Human.y, Human.z), glm::vec3(0,0,1));
-    // Helicopter view to be implemented
+        // Helicopter view to be implemented
     }
     glm::mat4 VP = Matrices.projection * Matrices.view;
     glm::mat4 MVP;	// MVP = Projection * View * Model
@@ -179,8 +180,14 @@ void draw ()
     Matrices.model *= HumanTransform;
     MVP = VP * Matrices.model; // MVP = p * V * M
     glUniformMatrix4fv(Matrices.MatrixID, 1, GL_FALSE, &MVP[0][0]);
-    draw3DObject(Human.cube);
+    draw3DObject(Human.sphere);
 
+    //Checking collision with ground and objects
+    for(i=0; i < No_cubes; i++)
+    {
+        //Collision using clamp
+                
+    }
 }
 
 void initGL (GLFWwindow* window, int width, int height)

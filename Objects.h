@@ -40,9 +40,27 @@ typedef struct Cub{
     VAO* cube;
     bool move;
     bool direction;
+    float vx;
+    float vy;
+    float vz;
+    float radius;
 }Cubes;
 
-extern Cubes Cube[MAX_CUBES], Human; 
+typedef struct S{
+    float x;
+    float y; 
+    float z;
+    float radius;
+    float vx;
+    float vy;
+    float vz;
+    VAO *sphere;
+    GLuint textureID;
+
+}Sphere;
+
+extern Cubes Cube[MAX_CUBES];
+extern Sphere Human;
 
 extern GLMatrices Matrices;
 

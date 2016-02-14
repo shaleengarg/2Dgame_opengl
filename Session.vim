@@ -328,63 +328,19 @@ setlocal nowinfixheight
 setlocal nowinfixwidth
 setlocal wrap
 setlocal wrapmargin=0
-73
+53
 normal! zo
-154
+78
 normal! zo
 169
 normal! zo
-172
+184
 normal! zo
-176
+225
 normal! zo
-205
+275
 normal! zo
-209
-normal! zo
-220
-normal! zo
-232
-normal! zo
-255
-normal! zo
-283
-normal! zo
-286
-normal! zo
-290
-normal! zo
-292
-normal! zo
-332
-normal! zo
-344
-normal! zo
-357
-normal! zo
-205
-normal! zo
-209
-normal! zo
-220
-normal! zo
-232
-normal! zo
-255
-normal! zo
-283
-normal! zo
-286
-normal! zo
-290
-normal! zo
-292
-normal! zo
-332
-normal! zo
-344
-normal! zo
-357
+352
 normal! zo
 let s:l = 1 - ((0 * winheight(0) + 19) / 38)
 if s:l < 1 | let s:l = 1 | endif
@@ -652,24 +608,18 @@ normal! zo
 normal! zc
 287
 normal! zo
-444
+396
 normal! zo
-456
+449
 normal! zo
-512
-normal! zo
-444
-normal! zo
-456
-normal! zo
-512
+462
 normal! zo
 let s:l = 297 - ((139 * winheight(0) + 19) / 38)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
 297
-normal! 034|
+normal! 01|
 tabedit Objects.h
 set splitbelow splitright
 set nosplitbelow
@@ -912,19 +862,13 @@ setlocal nowinfixheight
 setlocal nowinfixwidth
 setlocal wrap
 setlocal wrapmargin=0
-25
-normal! zo
-27
-normal! zo
 28
 normal! zo
-43
+29
 normal! zo
-44
+145
 normal! zo
-157
-normal! zo
-let s:l = 150 - ((76 * winheight(0) + 19) / 38)
+let s:l = 150 - ((105 * winheight(0) + 19) / 38)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
