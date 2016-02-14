@@ -192,15 +192,47 @@ void draw ()
         glm::vec3 clamped = glm::clamp(difference, -aabb_half_extents, aabb_half_extents);
         glm::vec3 closest = aabb_center + clamped;
         difference = closest - center;
-        if(glm::length(difference) < Human.radius)
+        if(glm::length(difference) < Human.radius)   //Resolution
         {
             cout << "collisions with :" << i << endl;
             if (Cube[i].move == 1)
                 cout << "dead !!!"  << endl;
+            //Resolution
+            glm::vec3 CentertoClosest = center - closest;
+            glm::vec3 Xx(1, 0, 0);
+            glm::vec3 Yy(0, 1, 0);
+            glm::vec3 Zz(0, 0, 1);
+            float Wx = glm::dot(Xx, CentertoClosest);
+            float Wy = glm::dot(Yy, CentertoClosest);
+            float Wz = glm::dot(Zz, CentertoClosest);
+            cout << Wx << " " << Wy << " " << Wz << endl;
+            if(Wx > 0) //collision form left Push towards +ve x
+            {
+                Human.x += abs(closest[0] - Human.radius);
+            }
+            else  //Push towards -ve x
+            {
+                Human.x -= abs(Human.radius-closest[0]);
+            }
+            if(Wy > 0) //push towards +ve y
+            {
+                Human.y += abs(closest[1] - Human.radius);
+            }
+            else //Push towards -ve y
+            {
+                Human.y -= abs(Human.radius-closest[1]);
+            }
+            if(Wz > 0) //Push towards +ve z
+            {
+                //Human.z += abs(closest[2] - Human.radius);
+            }
+            else  // else push towards -ve z
+            {
+                //Human.z -= abs(Human.radius-closest[2]);
+            }
         }
     }
 }
-
 
 void initGL (GLFWwindow* window, int width, int height)
 {
