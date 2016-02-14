@@ -17,3 +17,4 @@ extern float Followzoom;
 extern float Towerzoom;
 extern bool HeliChange; // for click and change the angle
 extern bool AdChange;
+extern bool Jump;

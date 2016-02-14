@@ -24,6 +24,7 @@ double OldCursorX;
 double OldCursorY;
 bool HeliChange; // for click and change the angle
 bool AdChange;
+bool Jump;
 
 void keyboard (GLFWwindow* window, int key, int scancode, int action, int mods)
 {
@@ -49,7 +50,8 @@ void keyboard (GLFWwindow* window, int key, int scancode, int action, int mods)
                 quit(window);
                 break;
             case GLFW_KEY_SPACE:
-
+                Jump = 1;
+                Human.direction = 1;
                 break;
             case GLFW_KEY_UP:
                 Human.y -= 1;

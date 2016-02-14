@@ -65,6 +65,7 @@ typedef struct S{
     float vx;
     float vy;
     float vz;
+    bool direction;
     VAO *sphere;
     GLuint textureID;
 
@@ -435,6 +436,7 @@ void createHuman()
     Human.x = 0;
     Human.y = 0;
     Human.z = MAP_CUBE_SIZE-2;
+    Human.direction = 1;
     GLfloat vertex_buffer_data [204410];
     GLfloat color_buffer_data[204410];
     int i, j, k=0;

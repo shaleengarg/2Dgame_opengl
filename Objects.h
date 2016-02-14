@@ -54,6 +54,7 @@ typedef struct S{
     float vx;
     float vy;
     float vz;
+    bool direction;
     VAO *sphere;
     GLuint textureID;
 
