@@ -23,6 +23,7 @@ float Towerzoom = 25;
 double OldCursorX;
 double OldCursorY;
 bool HeliChange; // for click and change the angle
+bool AdChange;
 
 void keyboard (GLFWwindow* window, int key, int scancode, int action, int mods)
 {
@@ -149,10 +150,13 @@ void mouseButton (GLFWwindow* window, int button, int action, int mods)
     switch (button) {
         case GLFW_MOUSE_BUTTON_LEFT:
             if (action == GLFW_PRESS) {
+                cout << "click" << endl;
                 HeliChange = true;
+                AdChange = true;
             }
             else if (action == GLFW_RELEASE){
                 HeliChange = false;
+                AdChange = false;
             }
             break;
         default:
@@ -162,13 +166,21 @@ void mouseButton (GLFWwindow* window, int button, int action, int mods)
 
 void CursorPosition (GLFWwindow* window, double x, double y)
 {
+    cout << "here" << endl;
     if(HeliChange == true)
     {
+        cout << AdventureViewAngle << endl;
         Theta += (x-OldCursorX);
         Phi += (y-OldCursorY);
-        OldCursorX = x;
-        OldCursorY = y;
     } 
+    if(AdChange == true)
+    {
+        AdventureViewAngle += x-OldCursorX;
+        cout << AdventureViewAngle << endl;
+    }
+
+    OldCursorX = x;
+    OldCursorY = y;
 }
 
 void Scroll (GLFWwindow* window, double x, double y)

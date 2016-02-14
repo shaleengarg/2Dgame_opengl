@@ -328,19 +328,15 @@ setlocal nowinfixheight
 setlocal nowinfixwidth
 setlocal wrap
 setlocal wrapmargin=0
-53
+49
 normal! zo
-78
+75
 normal! zo
-169
+149
 normal! zo
-184
+194
 normal! zo
-225
-normal! zo
-275
-normal! zo
-352
+268
 normal! zo
 let s:l = 1 - ((0 * winheight(0) + 19) / 38)
 if s:l < 1 | let s:l = 1 | endif
@@ -592,34 +588,24 @@ setlocal nowinfixheight
 setlocal nowinfixwidth
 setlocal wrap
 setlocal wrapmargin=0
-41
-normal! zo
 119
 normal! zo
 119
 normal! zc
-145
+262
 normal! zo
-145
-normal! zc
-158
+375
 normal! zo
-158
-normal! zc
-287
+435
 normal! zo
-396
+460
 normal! zo
-449
-normal! zo
-462
-normal! zo
-let s:l = 297 - ((139 * winheight(0) + 19) / 38)
+let s:l = 297 - ((178 * winheight(0) + 19) / 38)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
 297
-normal! 01|
+normal! 0
 tabedit Objects.h
 set splitbelow splitright
 set nosplitbelow
@@ -866,7 +852,7 @@ setlocal wrapmargin=0
 normal! zo
 29
 normal! zo
-145
+136
 normal! zo
 let s:l = 150 - ((105 * winheight(0) + 19) / 38)
 if s:l < 1 | let s:l = 1 | endif

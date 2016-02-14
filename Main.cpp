@@ -82,7 +82,7 @@ void draw ()
     }
     else if(AdventurerView == true)
     {
-        Matrices.view = glm::lookAt(glm::vec3(Human.x, Human.y+1, Human.z+2), glm::vec3(Human.x+AdventureViewAngle, Human.y+10, Human.z), glm::vec3(0,0,1));
+        Matrices.view = glm::lookAt(glm::vec3(Human.x, Human.y+1, Human.z+3), glm::vec3(Human.x+AdventureViewAngle, Human.y+10, Human.z), glm::vec3(0,0,1));
     }
     else if(HelicopterView == true)
     {
