@@ -20,8 +20,8 @@ bool AngleChangeFlag = false;  // For mouse controls to change the angles
 float Topzoom = 10;
 float Followzoom = 0;
 float Towerzoom = 25;
-double OldCursorX = Human.x;
-double OldCursorY = Human.y;
+double OldCursorX;
+double OldCursorY;
 bool HeliChange; // for click and change the angle
 
 void keyboard (GLFWwindow* window, int key, int scancode, int action, int mods)

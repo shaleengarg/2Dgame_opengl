@@ -1,10 +1,7 @@
 #define MAX_MAP 1000
 #define MAP_CUBE_SIZE 10
 
-void reshapeWindow (GLFWwindow*, int, int);
-static void error_callback(int, const char*);
 void draw ();
-GLFWwindow* initGLFW (int, int);
 void initGL (GLFWwindow*, int, int);
 int main (int, char**);
 
