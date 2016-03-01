@@ -80,8 +80,8 @@ set nosplitbelow
 set nosplitright
 wincmd t
 set winheight=1 winwidth=1
-exe 'vert 1resize ' . ((&columns * 30 + 84) / 169)
-exe 'vert 2resize ' . ((&columns * 138 + 84) / 169)
+exe 'vert 1resize ' . ((&columns * 14 + 40) / 81)
+exe 'vert 2resize ' . ((&columns * 66 + 40) / 81)
 argglobal
 enew
 file __Tag_List__
@@ -328,17 +328,15 @@ setlocal nowinfixheight
 setlocal nowinfixwidth
 setlocal wrap
 setlocal wrapmargin=0
-49
+55
 normal! zo
-75
+140
 normal! zo
-149
-normal! zo
-194
+186
 normal! zo
 268
 normal! zo
-let s:l = 1 - ((0 * winheight(0) + 19) / 38)
+let s:l = 1 - ((0 * winheight(0) + 10) / 21)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
@@ -346,8 +344,8 @@ normal! zt
 normal! 0
 wincmd w
 2wincmd w
-exe 'vert 1resize ' . ((&columns * 30 + 84) / 169)
-exe 'vert 2resize ' . ((&columns * 138 + 84) / 169)
+exe 'vert 1resize ' . ((&columns * 14 + 40) / 81)
+exe 'vert 2resize ' . ((&columns * 66 + 40) / 81)
 tabedit Main.h
 set splitbelow splitright
 set nosplitbelow
@@ -465,7 +463,7 @@ setlocal nowinfixheight
 setlocal nowinfixwidth
 setlocal wrap
 setlocal wrapmargin=0
-let s:l = 23 - ((22 * winheight(0) + 19) / 38)
+let s:l = 23 - ((12 * winheight(0) + 10) / 21)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
@@ -588,19 +586,11 @@ setlocal nowinfixheight
 setlocal nowinfixwidth
 setlocal wrap
 setlocal wrapmargin=0
-119
+263
 normal! zo
-119
-normal! zc
-262
+434
 normal! zo
-375
-normal! zo
-435
-normal! zo
-460
-normal! zo
-let s:l = 297 - ((178 * winheight(0) + 19) / 38)
+let s:l = 297 - ((177 * winheight(0) + 10) / 21)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
@@ -725,7 +715,7 @@ setlocal wrap
 setlocal wrapmargin=0
 32
 normal! zo
-let s:l = 43 - ((40 * winheight(0) + 19) / 38)
+let s:l = 43 - ((22 * winheight(0) + 10) / 21)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
@@ -848,13 +838,9 @@ setlocal nowinfixheight
 setlocal nowinfixwidth
 setlocal wrap
 setlocal wrapmargin=0
-28
+30
 normal! zo
-29
-normal! zo
-136
-normal! zo
-let s:l = 150 - ((105 * winheight(0) + 19) / 38)
+let s:l = 150 - ((103 * winheight(0) + 10) / 21)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
@@ -977,7 +963,7 @@ setlocal nowinfixheight
 setlocal nowinfixwidth
 setlocal wrap
 setlocal wrapmargin=0
-let s:l = 1 - ((0 * winheight(0) + 19) / 38)
+let s:l = 1 - ((0 * winheight(0) + 10) / 21)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
